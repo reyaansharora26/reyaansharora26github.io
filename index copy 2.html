@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; connect-src 'none'; font-src 'self';">
+    <meta http-equiv="Permissions-Policy"
+        content="camera=(), microphone=(), geolocation=(), usb=(), payment=(), interest-cohort=()">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyaansh's Portfole</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #010101;
+            color: #fff;
+            padding: 40px 0 20px 0;
+            width: 100vw;
+        }
+        .profile-img {
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+            border: 3px solid #fff;
+            margin-bottom: 15px;
+        }
+        main {
+            max-width: 700px;
+            width: 100%;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            padding: 32px 24px;
+        }
+        section {
+            margin-bottom: 36px;
+        }
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+        }
+        h2 {
+            color: #010101;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            border-left: 4px solid #010101;
+            padding-left: 10px;
+        }
+        h3 {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 3px 2px;
+            border-radius: 5px;
+            background-color: #010101;
+            color: #fff;
+            font-size: 0.95em;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 10px;
+            margin: 5px 2px;
+            border-radius: 5px;
+            background-color: #010101;
+            transition: background 0.2s;
+        }
+        a:hover {
+            background-color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 2px 0;
+        }
+        .job-title {
+            font-weight: bold;
+            color: #010101;
+        }
+        .hackathon {
+            font-weight: bold;
+            color: #010101;
+        }
+        #credwise-details {
+            display: none;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 800px) {
+            main {
+                padding: 18px 2vw;
+            }
+        }
+        @media (max-width: 500px) {
+            header {
+                padding: 24px 0 10px 0;
+            }
+            .profile-img {
+                width: 80px;
+                height: 80px;
+            }
+            main {
+                padding: 8px 1vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="profile-img" src="me.png" alt="Reyaansh Arora's profile photo">
+        <h1>👋Hi, I'm Reyaansh</h1>
+        <div class="subtitle">Full Stack Software Engineer | HTML, Java, JavaScript, Python &amp; CSS</div>
+    </header>
+    <main>
+        <section>
+            <h2>About</h2>
+            <p>
+                A Full Stack Software Engineer based in Canada with 2+ years of experience<br>
+                crafting clean, responsive, and user-friendly web applications. 🚀 I specialize in<br>
+                frontend magic with frameworks like React, Next, Angular and love building<br>
+                seamless, scalable solutions using JavaScript, TypeScript, Node, AWS, and SQL.<br>
+                💻 Let's connect and create something awesome! ✨
+            </p>
+        </section>
+        <section>
+            <h2>Work Experience</h2>
+            <p onclick="toggleDetails('credwise-details')" style="cursor: pointer;">
+                <span class="job-title">Full Stack Developer</span>
+                <span class="tag">@ Credwise</span>
+            </p>
+            <div id="credwise-details">
+                <p>Built a web app, <strong>ImmigrateX</strong>, using the MERN stack to help immigrants access housing, car rentals, and essential resources for transitioning to Canada. Designed and developed client onboarding features for realtors and car dealerships, including document uploads, soft credit checks, and service listings.</p>
+            </div>
+            <p>
+                <span class="job-title">Software Engineer</span>
+                <span class="tag">@ Coforge</span>
+            </p>
+        </section>
+        <section>
+            <h2>Education</h2>
+            <p><span class="tag">Humber Polytechnic</span></p>
+            <p>Graduate Certificate in Information Technology</p>
+        </section>
+        <section>
+            <h2>Skills</h2>
+            <div>
+                <span class="tag">Node.js</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Java</span>
+                <span class="tag">Python</span>
+                <span class="tag">HTML</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">React.js</span>
+                <span class="tag">Angular</span>
+                <span class="tag">Express.js</span>
+                <span class="tag">AWS</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Tiny.host</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">Netlify</span>
+                <span class="tag">Postman</span>
+                <span class="tag">CSS</span>
+                <span class="tag">C++</span>
+                <span class="tag">ChatGPT</span>
+                <span class="tag">DeepSeek</span>
+                <span class="tag">OpenAI</span>
+                <span class="tag">VS Code</span>
+            </div>
+        </section>
+        <section>
+            <h2>Projects</h2>
+            <h3>Check out my latest work:</h3>
+            <a href="https://reyaansharora26.github.io/canada-quiz/" target="_blank" rel="noopener noreferrer">Canada Quiz</a>
+            <a href="file:///Users/RockyRyan/Desktop/best%20coders/index%20copy.html" target="_blank" rel="noopener noreferrer">Best Coders</a>
+        </section>
+        <section>
+            <h2 style="text-align: center;">Hackathons</h2>
+            <h1 style="text-align: center;">I like building things!</h1>
+            <p> During my time in college, I attended 3+ hackathons. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.</p>
+            <ul>
+                <li class="hackathon">TBC &amp; Matera Fintech Weekend</li>
+                <p>Developed AI-powered fraud detection and middleware to detect fake QR codes, displaying risk scores to users and notifying merchants. Secured a spot in the top 6 finalists for innovative payment security solutions.</p>
+                <li class="hackathon">AWS DeepRacer Competition 2024</li>
+                <p>Led a team of four in the AWS DeepRacer competition at Humber College, designing and implementing a deep learning model for autonomous racing. Secured 3rd place by optimizing reinforcement learning algorithms to detect and navigate the track effectively.</p>
+                <li class="hackathon">Bell Geekfest Hackathon 2023</li>
+                <p>Developed an application to detect malicious URLs, focusing on Online Privacy and Security. Collaborated with a team to design and present the solution, leveraging industry mentorship and pitching to a panel of judges.</p>
+            </ul>
+        </section>
+        <section>
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Basketball</li>
+                <li>Soccer</li>
+                <li>Cricket</li>
+                <li>Ice-skating</li>
+                <li>Swimming</li>
+                <li>Coding</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Connect with Me</h2>
+            <p>If you have any other questions or just want to say hi, feel free to send me an
+                <a href="mailto:reyaansharora2016@gmail.com" target="_blank" rel="noopener noreferrer">email</a>
+            </p>
+        </section>
+    </main>
+    <script>
+        function toggleDetails(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
