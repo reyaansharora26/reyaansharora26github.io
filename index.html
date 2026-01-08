@@ -5,73 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reyaansh's Portfolio</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="logo.png">
 
   <style>
+
+    /* ---------- GLOBAL ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #f0f0f0, #eaeaea);
+      background: radial-gradient(circle at top, #ffffff 0%, #e8e8e8 30%, #dcdcdc 60%);
       margin: 0;
       padding: 0 16px;
       line-height: 1.7;
       color: #222;
+      position: relative;
+      overflow-x: hidden;
     }
 
+    /* Animated background blobs */
+    .bg-shape {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      filter: blur(120px);
+      opacity: 0.5;
+      z-index: -1;
+      animation: float 12s infinite ease-in-out;
+    }
+    .shape1 { top: -80px; left: -80px; background: #8e9bff; }
+    .shape2 { bottom: -120px; right: -120px; background: #ffb6af; animation-delay: 2s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-40px); }
+    }
+
+    /* Scroll progress bar */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      width: 0;
+      background: linear-gradient(90deg, #000, #555);
+      z-index: 1000;
+    }
+
+    /* ---------- HEADER ---------- */
     header {
       text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(135deg, #000, #222);
+      padding: 60px 20px;
+      background: linear-gradient(145deg, #000, #1b1b1b);
       color: #fff;
-      border-radius: 28px;
-      margin-top: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border-radius: 30px;
+      margin-top: 25px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent);
     }
 
     .intro {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .intro img {
-      width: 130px;
-      height: 130px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       margin-top: 10px;
-      border: 4px solid #fff;
+      border: 5px solid #fff;
       animation: bounce 2s infinite;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     }
 
     .intro-text h1 {
-      font-size: 2.4rem;
+      font-size: 2.7rem;
       margin-bottom: 6px;
     }
 
     .intro-text p {
-      font-size: 1.05rem;
-      opacity: 0.9;
+      font-size: 1.1rem;
+      opacity: 0.95;
     }
 
+    .information button {
+      margin-top: 10px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ---------- SECTIONS ---------- */
     section {
-      max-width: 850px;
-      margin: 35px auto;
-      padding: 26px;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(8px);
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 28px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(45px);
       transition: opacity 0.7s ease, transform 0.7s ease;
+      position: relative;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: 30px;
+      width: 60px;
+      height: 4px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #000, #777);
     }
 
     section.visible {
@@ -80,9 +147,9 @@
     }
 
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 14px;
-      border-left: 5px solid #000;
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+      border-left: 6px solid #000;
       padding-left: 12px;
     }
 
@@ -99,7 +166,13 @@
       display: inline-block;
       margin: 6px 6px 10px 0;
       font-size: 0.9rem;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .highlight:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
     }
 
     a {
@@ -109,46 +182,47 @@
       text-decoration: none;
       padding: 10px 18px;
       margin: 8px 8px 0 0;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 600;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.28);
     }
 
     a:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
-      background: linear-gradient(135deg, #111, #444);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.45);
+      background: linear-gradient(135deg, #101010, #444);
     }
 
     ul {
       list-style: none;
       padding: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
     }
 
     li {
       background: #f7f7f7;
-      padding: 10px 14px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      padding: 12px 16px;
+      border-radius: 14px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.06);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
     }
 
     .ending {
       text-align: center;
-      padding: 45px 20px;
+      padding: 50px 20px;
       background: linear-gradient(135deg, #000, #222);
       color: #fff;
-      border-radius: 28px;
-      margin: 40px 0 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      border-radius: 30px;
+      margin: 45px 0 25px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
     }
 
     button {
@@ -156,134 +230,175 @@
       color: #fff;
       border: none;
       padding: 10px 18px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
       transition: all 0.3s ease;
     }
+
+    button:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Back to top button */
+    #topBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      padding: 12px 16px;
+      border-radius: 50%;
+      display: none;
+    }
+
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="intro">
-      <div class="intro-text">
-        <h1>👋Hi, I'm Reyaansh</h1>
-        <p>Full Stack Software Engineer | HTML, Java,<br>
-          JavaScript, Python & CSS</p>
-      </div>
-      <img src="reyaansh.png" alt="Reyaansh Arora">
+<div id="progress"></div>
+<div class="bg-shape shape1"></div>
+div class="bg-shape shape2"></div>
+
+<header>
+  <div class="intro">
+    <div class="intro-text">
+      <h1>👋 Hi, I'm Reyaansh</h1>
+      <p>Full Stack Software Engineer | HTML, Java,<br>
+        JavaScript, Python & CSS</p>
     </div>
-    <div class="information">
-     <a href="https://github.com/reyaansharora26" class="info"><button>github</button></a>
-    </div>
-  </header>
-
-  <section>
-    <h2>About</h2>
-    <p>A Full Stack Software Engineer based in Canada with 2+ years of experience</p>
-    <p>crafting clean, responsive, and user-friendly web applications. 🚀 I specialize in</p>
-    <p>frontend magic with frameworks like React, Next, Angular and love building</p>
-    <p>seamless, scalable solutions using JavaScript, TypeScript, Node, AWS, and SQL.</p>
-    <p>💻 Let's connect and create something awesome! ✨</p>
-  </section>
-
-  <section>
-    <h2>Work Experience (Canada)</h2>
-    <p><span class="highlight">Full Stack Developer</span> @ BrightRoot Solutions</p>
-    <p><span class="highlight">Software Engineer</span> @ BrightRoot Solutions</p>
-  </section>
-
-  <section>
-    <h2>Education</h2>
-    <p><span class="highlight">Lorenville Public School</span></p>
-    <p>certificate of best programming practices in web development</p>
-
-    <p><span class="highlight">Ultimate Coders</span></p>
-    <p>3rd place of having the best web development project</p>
-  </section>
-
-  <section>
-    <h2>Skills</h2>
-    <p>
-      <span class="highlight">Node.js</span>
-      <span class="highlight">Next.js</span>
-      <span class="highlight">JavaScript</span>
-      <span class="highlight">Java</span>
-      <span class="highlight">Python</span>
-      <span class="highlight">HTML</span>
-      <span class="highlight">TypeScript</span>
-      <span class="highlight">React.js</span>
-      <span class="highlight">Angular</span>
-      <span class="highlight">Express.js</span>
-      <span class="highlight">AWS</span>
-      <span class="highlight">MySQL</span>
-      <span class="highlight">Tiny.host</span>
-      <span class="highlight">GitHub</span>
-      <span class="highlight">Netlify</span>
-      <span class="highlight">Postman</span>
-      <span class="highlight">CSS</span>
-      <span class="highlight">C++</span>
-      <span class="highlight">ChatGPT</span>
-      <span class="highlight">Deepseek</span>
-      <span class="highlight">OpenAI</span>
-      <span class="highlight">VS Code</span>
-    </p>
-  </section>
-
-  <section>
-    <h2>Projects</h2>
-    <h3>Check out my latest work</h3>
-    <a href="https://reyaansharora26.github.io/canada-quiz/" target="_blank">Canada Quiz</a>
-    <a href="#">Best Coders (local only)</a>
-  </section>
-
-  <section>
-    <h2>Hackathons</h2>
-    <p><span class="highlight">TBC & Matera Fintech Weekend</span></p>
-    <p><span class="highlight">AWS DeepRacer Competition 2024</span></p>
-    <p><span class="highlight">Bell Geekfest Hackathon 2023</span></p>
-  </section>
-
-  <section>
-    <h2>Hobbies</h2>
-    <ul>
-      <li>🏀 Basketball</li>
-      <li>⚽ Soccer</li>
-      <li>🏏 Cricket</li>
-      <li>⛸ Ice-skating</li>
-      <li>🏊 Swimming</li>
-      <li>💻 Coding</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Connect with Me</h2>
-    <p>Got a question or just want to say hi?</p>
-    <a href="mailto:reyaansharora2016@gmail.com">Send me an email</a>
-  </section>
-
-  <div class="ending">
-    <a href="https://github.com/reyaansharora26" class="github">GitHub</a>
-    <p>2026 Reyaansh Arora — All rights reserved</p>
+    <img src="reyaansh.png" alt="Reyaansh Arora">
   </div>
 
-  <script>
-    const sections = document.querySelectorAll("section");
+  <div class="information">
+    <a href="https://github.com/reyaansharora26" class="info">
+      <button>GitHub</button>
+    </a>
+  </div>
+</header>
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+<!-- your SAME SECTIONS (unchanged text — only styled better) -->
 
-    sections.forEach(section => observer.observe(section));
-  </script>
+<section>
+  <h2>About</h2>
+  <p>A Full Stack Software Engineer based in Canada with 2+ years of experience</p>
+  <p>crafting clean, responsive, and user-friendly web applications. 🚀 I specialize in</p>
+  <p>frontend magic with frameworks like React, Next, Angular and love building</p>
+  <p>seamless, scalable solutions using JavaScript, TypeScript, Node, AWS, and SQL.</p>
+  <p>💻 Let's connect and create something awesome! ✨</p>
+</section>
+
+<section>
+  <h2>Work Experience (Canada)</h2>
+  <p><span class="highlight">Full Stack Developer</span> @ BrightRoot Solutions</p>
+  <p><span class="highlight">Software Engineer</span> @ BrightRoot Solutions</p>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <p><span class="highlight">Lorenville Public School</span></p>
+  <p>certificate of best programming practices in web development</p>
+
+  <p><span class="highlight">Ultimate Coders</span></p>
+  <p>3rd place of having the best web development project</p>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <p>
+    <span class="highlight">Node.js</span>
+    <span class="highlight">Next.js</span>
+    <span class="highlight">JavaScript</span>
+    <span class="highlight">Java</span>
+    <span class="highlight">Python</span>
+    <span class="highlight">HTML</span>
+    <span class="highlight">TypeScript</span>
+    <span class="highlight">React.js</span>
+    <span class="highlight">Angular</span>
+    <span class="highlight">Express.js</span>
+    <span class="highlight">AWS</span>
+    <span class="highlight">MySQL</span>
+    <span class="highlight">Tiny.host</span>
+    <span class="highlight">GitHub</span>
+    <span class="highlight">Netlify</span>
+    <span class="highlight">Postman</span>
+    <span class="highlight">CSS</span>
+    <span class="highlight">C++</span>
+    <span class="highlight">ChatGPT</span>
+    <span class="highlight">Deepseek</span>
+    <span class="highlight">OpenAI</span>
+    <span class="highlight">VS Code</span>
+  </p>
+</section>
+
+<section>
+  <h2>Projects</h2>
+  <h3>Check out my latest work</h3>
+  <a href="https://reyaansharora26.github.io/canada-quiz/" target="_blank">Canada Quiz</a>
+  <a href="#">Best Coders (local only)</a>
+</section>
+
+<section>
+  <h2>Hackathons</h2>
+  <p><span class="highlight">TBC & Matera Fintech Weekend</span></p>
+  <p><span class="highlight">AWS DeepRacer Competition 2024</span></p>
+  <p><span class="highlight">Bell Geekfest Hackathon 2023</span></p>
+</section>
+
+<section>
+  <h2>Hobbies</h2>
+  <ul>
+    <li>🏀 Basketball</li>
+    <li>⚽ Soccer</li>
+    <li>🏏 Cricket</li>
+    <li>⛸ Ice-skating</li>
+    <li>🏊 Swimming</li>
+    <li>💻 Coding</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Connect with Me</h2>
+  <p>Got a question or just want to say hi?</p>
+  <a href="mailto:reyaansharora2016@gmail.com">Send me an email</a>
+</section>
+
+<div class="ending">
+  <a href="https://github.com/reyaansharora26" class="github">GitHub</a>
+  <p>2026 Reyaansh Arora — All rights reserved</p>
+</div>
+
+<button id="topBtn">⬆</button>
+
+<script>
+  const sections = document.querySelectorAll("section");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach(section => observer.observe(section));
+
+  // Scroll progress
+  const progress = document.getElementById("progress");
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const height = document.body.scrollHeight - window.innerHeight;
+    progress.style.width = (scrollTop / height) * 100 + "%";
+  });
+
+  // Back to top button
+  const topBtn = document.getElementById("topBtn");
+  window.addEventListener("scroll", () => {
+    topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  topBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+</script>
 
 </body>
 </html>
