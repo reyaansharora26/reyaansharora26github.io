@@ -9,15 +9,9 @@
   <link rel="icon" type="image/png" href="logo.png">
 
   <style>
+    * { box-sizing: border-box; }
 
-    /* ---------- GLOBAL ---------- */
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -26,11 +20,9 @@
       padding: 0 16px;
       line-height: 1.7;
       color: #222;
-      position: relative;
       overflow-x: hidden;
     }
 
-    /* Animated background blobs */
     .bg-shape {
       position: fixed;
       width: 400px;
@@ -48,7 +40,6 @@
       50% { transform: translateY(-40px); }
     }
 
-    /* Scroll progress bar */
     #progress {
       position: fixed;
       top: 0;
@@ -59,7 +50,6 @@
       z-index: 1000;
     }
 
-    /* ---------- HEADER ---------- */
     header {
       text-align: center;
       padding: 60px 20px;
@@ -70,13 +60,6 @@
       box-shadow: 0 20px 45px rgba(0,0,0,0.35);
       position: relative;
       overflow: hidden;
-    }
-
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent);
     }
 
     .intro {
@@ -90,55 +73,25 @@
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      margin-top: 10px;
       border: 5px solid #fff;
       animation: bounce 2s infinite;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    }
-
-    .intro-text h1 {
-      font-size: 2.7rem;
-      margin-bottom: 6px;
-    }
-
-    .intro-text p {
-      font-size: 1.1rem;
-      opacity: 0.95;
-    }
-
-    .information button {
-      margin-top: 10px;
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
+      0%,100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    /* ---------- SECTIONS ---------- */
     section {
       max-width: 900px;
       margin: 40px auto;
       padding: 28px;
       background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
       border-radius: 20px;
       box-shadow: 0 12px 28px rgba(0,0,0,0.08);
       opacity: 0;
       transform: translateY(45px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-      position: relative;
-    }
-
-    section::before {
-      content: "";
-      position: absolute;
-      top: -15px;
-      left: 30px;
-      width: 60px;
-      height: 4px;
-      border-radius: 99px;
-      background: linear-gradient(90deg, #000, #777);
+      transition: 0.7s ease;
     }
 
     section.visible {
@@ -147,15 +100,8 @@
     }
 
     h2 {
-      font-size: 1.7rem;
-      margin-bottom: 12px;
       border-left: 6px solid #000;
       padding-left: 12px;
-    }
-
-    h3 {
-      margin-top: 10px;
-      margin-bottom: 14px;
     }
 
     .highlight {
@@ -166,13 +112,6 @@
       display: inline-block;
       margin: 6px 6px 10px 0;
       font-size: 0.9rem;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .highlight:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
     }
 
     a {
@@ -184,14 +123,11 @@
       margin: 8px 8px 0 0;
       border-radius: 12px;
       font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+      transition: 0.3s ease;
     }
 
     a:hover {
       transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.45);
-      background: linear-gradient(135deg, #101010, #444);
     }
 
     ul {
@@ -204,15 +140,8 @@
 
     li {
       background: #f7f7f7;
-      padding: 12px 16px;
+      padding: 12px;
       border-radius: 14px;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.06);
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    li:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
     }
 
     .ending {
@@ -222,35 +151,20 @@
       color: #fff;
       border-radius: 30px;
       margin: 45px 0 25px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
     }
 
-    button {
-      background: linear-gradient(135deg, #000, #222);
-      color: #fff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      transform: translateY(-3px);
-    }
-
-    /* Back to top button */
     #topBtn {
       position: fixed;
       right: 20px;
       bottom: 20px;
+      display: none;
+      border: none;
       padding: 12px 16px;
       border-radius: 50%;
-      display: none;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
     }
-
   </style>
 </head>
 
@@ -262,21 +176,14 @@
 
 <header>
   <div class="intro">
-    <div class="intro-text">
-      <h1>👋 Hi, I'm Reyaansh</h1>
-      <p>Full Stack Software Engineer | HTML, Java,<br>
-        JavaScript, Python & CSS</p>
-    </div>
+    <h1>👋 Hi, I'm Reyaansh</h1>
+    <p>Full Stack Software Engineer | HTML, Java,<br>JavaScript, Python & CSS</p>
     <img src="reyaansh.png" alt="Reyaansh Arora">
   </div>
 
-<div class="information">
+  <!-- ✅ FIXED TOP GITHUB BUTTON -->
   <a href="https://github.com/reyaansharora26" target="_blank">GitHub</a>
-</div>
-
 </header>
-
-<!-- your SAME SECTIONS (unchanged text — only styled better) -->
 
 <section>
   <h2>About</h2>
@@ -297,7 +204,6 @@
   <h2>Education</h2>
   <p><span class="highlight">Lorenville Public School</span></p>
   <p>certificate of best programming practices in web development</p>
-
   <p><span class="highlight">Ultimate Coders</span></p>
   <p>3rd place of having the best web development project</p>
 </section>
@@ -371,7 +277,6 @@
 
 <script>
   const sections = document.querySelectorAll("section");
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -383,15 +288,12 @@
 
   sections.forEach(section => observer.observe(section));
 
-  // Scroll progress
   const progress = document.getElementById("progress");
   window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
     const height = document.body.scrollHeight - window.innerHeight;
-    progress.style.width = (scrollTop / height) * 100 + "%";
+    progress.style.width = (window.scrollY / height) * 100 + "%";
   });
 
-  // Back to top button
   const topBtn = document.getElementById("topBtn");
   window.addEventListener("scroll", () => {
     topBtn.style.display = window.scrollY > 300 ? "block" : "none";
